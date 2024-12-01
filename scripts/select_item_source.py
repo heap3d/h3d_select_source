@@ -17,11 +17,17 @@ from h3d_utilites.scripts.h3d_debug import h3dd
 def main():
     selected = modo.Scene.selected
 
-    source_items = []
+    source_items: list[modo.Item] = []
     for item in selected:
         source = get_instance_source(item)
         if source:
             source_items.append(source)
+        sources = get_replicator_prototypes(item)
+        source_items.extend(sources)
+
+    modo.Scene().deselect()
+    for item in source_items:
+        item.select()
 
 
 def get_instance_source(instance: modo.Item) -> Union[None, modo.Item]:
