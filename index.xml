@@ -2,7 +2,13 @@
 <package version="801">
 	<kit name="h3d_select_source" restart="YES">
 		<source target="h3d_select_source/index.cfg">index.cfg</source>
-		<source target="h3d_select_source/scripts/selectByAngle.py">scripts/selectByAngle.py</source>
+		<source target="h3d_select_source/scripts/select_instance_source.py">scripts/select_instance_source.py</source>
+		<source target="h3d_select_source/scripts/select_item_instances.py">scripts/select_item_instances.py</source>
+		<source target="h3d_select_source/scripts/select_item_replicators.py">scripts/select_item_replicators.py</source>
+		<source target="h3d_select_source/scripts/select_item_source.py">scripts/select_item_source.py</source>
+		<source target="h3d_select_source/scripts/select_item_usage.py">scripts/select_item_usage.py</source>
+		<source target="h3d_select_source/scripts/select_replicator_point_source.py">scripts/select_replicator_point_source.py</source>
+		<source target="h3d_select_source/scripts/select_replicator_prototype.py">scripts/select_replicator_prototype.py</source>
 	</kit>
-	<message button="Help">h3d_select_by_angle Kit installation complete.</message>
+	<message button="Help">h3d_select_source Kit installation complete.</message>
 </package>
