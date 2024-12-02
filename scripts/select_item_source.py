@@ -7,7 +7,7 @@
 # select item source
 # ================================
 
-from typing import Iterable, Union
+from typing import Union
 
 import modo
 
@@ -35,16 +35,16 @@ def main():
 
 def get_instance_source(instance: modo.Item) -> Union[None, modo.Item]:
     try:
-        return instance.itemGraph('source').forward()[0]
+        return instance.itemGraph('meshInst').reverse()[0]
     except IndexError:
         return None
 
 
-def get_replicator_prototypes(replicator: modo.Item) -> Iterable[modo.Item]:
+def get_replicator_prototypes(replicator: modo.Item) -> list[modo.Item]:
     prototypes = [
-        i
-        for i in replicator.itemGraph('particle').forward()
-        if (i.type != 'replicator' or replicator.type == 'replicator')
+        item
+        for item in replicator.itemGraph('particle').forward()
+        if (item.type != 'replicator' or replicator.type == 'replicator')
     ]
 
     return prototypes

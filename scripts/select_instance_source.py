@@ -15,8 +15,8 @@ from h3d_select_source.scripts.select_item_source import get_instance_source
 def main():
     items: list[modo.Item] = modo.Scene().selected
     sources: list[modo.Item] = []
-    for i in items:
-        source_item = get_instance_source(i)
+    for item in items:
+        source_item = get_instance_source(item)
         if source_item:
             sources.append(source_item)
 
@@ -24,9 +24,9 @@ def main():
         return
 
     modo.Scene().deselect()
-    for i in set(sources):
-        if i:
-            i.select()
+    for item in set(sources):
+        if item:
+            item.select()
 
 
 if __name__ == '__main__':

@@ -6,7 +6,7 @@
 		<source target="h3d_select_source/scripts/select_item_instances.py">scripts/select_item_instances.py</source>
 		<source target="h3d_select_source/scripts/select_item_replicators.py">scripts/select_item_replicators.py</source>
 		<source target="h3d_select_source/scripts/select_item_source.py">scripts/select_item_source.py</source>
-		<source target="h3d_select_source/scripts/select_item_usage.py">scripts/select_item_usage.py</source>
+		<source target="h3d_select_source/scripts/select_items_used.py">scripts/select_items_used.py</source>
 		<source target="h3d_select_source/scripts/select_replicator_point_source.py">scripts/select_replicator_point_source.py</source>
 		<source target="h3d_select_source/scripts/select_replicator_prototype.py">scripts/select_replicator_prototype.py</source>
 	</kit>

@@ -7,11 +7,24 @@
 # select instances of specified item
 # ================================
 
-import lx
+import modo
+
+from scripts.select_items_used import get_instances
 
 
 def main():
-    lx.eval('select.itemInstances')
+    selected = modo.Scene().selected
+
+    items_used: list[modo.Item] = []
+    for item in selected:
+        items_used.extend(get_instances(item))
+
+    if not items_used:
+        return
+
+    modo.Scene().deselect()
+    for item in items_used:
+        item.select()
 
 
 if __name__ == '__main__':

@@ -15,15 +15,15 @@ from h3d_select_source.scripts.select_item_source import get_replicator_prototyp
 def main():
     items: list[modo.Item] = modo.Scene().selected
     sources: set[modo.Item] = set()
-    for i in items:
-        sources.update(get_replicator_prototypes(i))
+    for item in items:
+        sources.update(get_replicator_prototypes(item))
 
     if not sources:
         return
 
     modo.Scene().deselect()
-    for i in sources:
-        i.select()
+    for item in sources:
+        item.select()
 
 
 if __name__ == '__main__':
