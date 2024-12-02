@@ -18,6 +18,9 @@ def main():
     for i in items:
         sources.update(get_replicator_prototypes(i))
 
+    if not sources:
+        return
+
     modo.Scene().deselect()
     for i in sources:
         i.select()

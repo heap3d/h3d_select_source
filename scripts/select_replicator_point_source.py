@@ -16,7 +16,12 @@ def main():
     items: list[modo.Item] = modo.Scene().selected
     sources: set[modo.Item] = set()
     for i in items:
-        sources.add(get_replicator_point_source(i))
+        source_item = get_replicator_point_source(i)
+        if source_item:
+            sources.add(source_item)
+
+    if not sources:
+        return
 
     modo.Scene().deselect()
     for i in sources:
