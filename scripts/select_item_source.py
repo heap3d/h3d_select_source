@@ -35,7 +35,7 @@ def main():
 
 def get_instance_source(instance: modo.Item) -> Union[None, modo.Item]:
     try:
-        return instance.itemGraph('meshInst').reverse()[0]
+        return instance.itemGraph('source').forward()[0]
     except IndexError:
         return None
 

@@ -27,7 +27,7 @@ def main():
 
 
 def get_instances(item: modo.Item) -> list[modo.Item]:
-    return item.itemGraph('meshInst').forward()
+    return item.itemGraph('source').reverse()
 
 
 def get_replicators(item: modo.Item) -> list[modo.Item]:
