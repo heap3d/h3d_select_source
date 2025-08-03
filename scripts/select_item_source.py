@@ -1,17 +1,15 @@
 #!/usr/bin/python
 # ================================
-# (C)2024 Dmytro Holub
+# (C)2024-2025 Dmytro Holub
 # heap3d@gmail.com
 # --------------------------------
 # modo python
 # select item source
 # ================================
 
-from typing import Union
+from typing import Optional
 
 import modo
-
-from h3d_utilites.scripts.h3d_debug import h3dd
 
 
 def main():
@@ -33,35 +31,44 @@ def main():
         item.select()
 
 
-def get_instance_source(instance: modo.Item) -> Union[None, modo.Item]:
-    try:
-        return instance.itemGraph('source').forward()[0]
-    except IndexError:
+def get_instance_source(instance: modo.Item) -> Optional[modo.Item]:
+    source_forward = instance.itemGraph('source').forward()
+
+    if not (isinstance(source_forward, list)):
+        return source_forward
+
+    if not source_forward:
         return None
+
+    return source_forward[0]
 
 
 def get_replicator_prototypes(replicator: modo.Item) -> list[modo.Item]:
+    forward_items = replicator.itemGraph('particle').forward()
+    if not isinstance(forward_items, list):
+        raise TypeError("Expected a list of items from itemGraph")
+
     prototypes = [
         item
-        for item in replicator.itemGraph('particle').forward()
+        for item in forward_items
         if (item.type != 'replicator' or replicator.type == 'replicator')
     ]
 
     return prototypes
 
 
-def get_replicator_point_source(replicator: modo.Item) -> Union[None, modo.Item]:
-    try:
-        source_item = replicator.itemGraph('particle').reverse()[0]
-        if (source_item.type == 'replicator' and replicator.type != 'replicator'):
-            return None
+def get_replicator_point_source(replicator: modo.Item) -> Optional[modo.Item]:
+    reverse_items = replicator.itemGraph('particle').reverse()
 
-        return source_item
+    if not isinstance(reverse_items, list):
+        return reverse_items
 
-    except IndexError:
+    source_item = reverse_items[0]
+    if (source_item.type == 'replicator' and replicator.type != 'replicator'):
         return None
+
+    return source_item
 
 
 if __name__ == '__main__':
-    h3dd.enable_debug_output(False)
     main()

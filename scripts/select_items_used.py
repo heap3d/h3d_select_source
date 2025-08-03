@@ -27,13 +27,28 @@ def main():
 
 
 def get_instances(item: modo.Item) -> list[modo.Item]:
-    return item.itemGraph('source').reverse()
+    item_graph_items = item.itemGraph('source').reverse()
+
+    if not isinstance(item_graph_items, list):
+        raise TypeError("Expected a list of items from itemGraph")
+
+    return item_graph_items
 
 
 def get_replicators(item: modo.Item) -> list[modo.Item]:
     used_items: list[modo.Item] = []
-    used_items.extend(item.itemGraph('particle').reverse())
-    used_items.extend(item.itemGraph('particle').forward())
+
+    reverse_items = item.itemGraph('particle').reverse()
+
+    if not isinstance(reverse_items, list):
+        raise TypeError("Expected a list of items from itemGraph")
+
+    forward_items = item.itemGraph('particle').forward()
+    if not isinstance(forward_items, list):
+        raise TypeError("Expected a list of items from itemGraph")
+
+    used_items.extend(reverse_items)
+    used_items.extend(forward_items)
 
     return used_items
 
