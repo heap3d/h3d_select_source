@@ -9,7 +9,7 @@
 
 import modo
 
-from h3d_select_source.scripts.select_item_source import get_instance_source
+from scripts.select_item_source import get_instance_source
 
 
 def main():

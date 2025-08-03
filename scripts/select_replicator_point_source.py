@@ -9,7 +9,7 @@
 
 import modo
 
-from h3d_select_source.scripts.select_item_source import get_replicator_point_source
+from scripts.select_item_source import get_replicator_point_source
 
 
 def main():
