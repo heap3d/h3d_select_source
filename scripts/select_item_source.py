@@ -63,6 +63,9 @@ def get_replicator_point_source(replicator: modo.Item) -> Optional[modo.Item]:
     if not isinstance(reverse_items, list):
         return reverse_items
 
+    if not reverse_items:
+        return None
+
     source_item = reverse_items[0]
     if (source_item.type == 'replicator' and replicator.type != 'replicator'):
         return None
